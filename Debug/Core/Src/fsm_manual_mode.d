@@ -1,4 +1,6 @@
-Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
+Core/Src/fsm_manual_mode.o: ../Core/Src/fsm_manual_mode.c \
+ ../Core/Inc/fsm_manual_mode.h ../Core/Inc/global.h ../Core/Inc/timer.h \
+ ../Core/Inc/button.h ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -24,10 +26,17 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
- ../Core/Inc/global.h ../Core/Inc/timer.h ../Core/Inc/global.h \
- ../Core/Inc/button.h ../Core/Inc/main.h ../Core/Inc/LEDs_display.h \
- ../Core/Inc/fsm_auto_mode.h ../Core/Inc/fsm_manual_mode.h \
- ../Core/Inc/fsm_tuning_mode.h ../Core/Inc/fsm_pedestrian_mode.h
+ ../Core/Inc/LEDs_display.h ../Core/Inc/fsm_auto_mode.h \
+ ../Core/Inc/fsm_manual_mode.h ../Core/Inc/fsm_tuning_mode.h \
+ ../Core/Inc/fsm_pedestrian_mode.h
+
+../Core/Inc/fsm_manual_mode.h:
+
+../Core/Inc/global.h:
+
+../Core/Inc/timer.h:
+
+../Core/Inc/button.h:
 
 ../Core/Inc/main.h:
 
@@ -80,16 +89,6 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
-
-../Core/Inc/global.h:
-
-../Core/Inc/timer.h:
-
-../Core/Inc/global.h:
-
-../Core/Inc/button.h:
-
-../Core/Inc/main.h:
 
 ../Core/Inc/LEDs_display.h:
 

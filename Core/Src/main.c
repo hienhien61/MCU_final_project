@@ -19,6 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "global.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -93,18 +94,18 @@ int main(void)
   MX_USART2_UART_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_TIM_Base_Start_IT(&htim3);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+
   while (1)
   {
-	  __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 10);
-	  HAL_Delay(1000);
-	  __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 100);
-	  HAL_Delay(1000);
+	  fsmAutoModeRun();
+	  fsmManualModeRun();
+	  fsmTuningModeRun();
+	  fsmPedestrianModeRun();
 
     /* USER CODE END WHILE */
 
@@ -280,7 +281,10 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+	timerRun();
+	getKeyInput();
+}
 /* USER CODE END 4 */
 
 /**

@@ -1,0 +1,4 @@
+timer.c:6:5:currentCounter	16	static
+timer.c:10:5:isTimerUp	16	static
+timer.c:14:6:setTimer	16	static
+timer.c:18:6:timerRun	4	static
