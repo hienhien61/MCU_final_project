@@ -4,8 +4,6 @@
 #include "global.h"
 #include "main.h"
 
-extern int time_count;
-
 void fsmAutoModeRun();
 
 #endif /* INC_FSM_AUTO_MODE_H_ */

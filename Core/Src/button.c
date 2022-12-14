@@ -14,7 +14,11 @@ int isButtonPressed(int button) {
 }
 
 int isButtonLongPressed(int button) {
-	return (button_long_flag[button] == 1);
+	if (button_long_flag[button]) {
+		button_long_flag[button] = 0;
+		return 1;
+	}
+	else return 0;
 }
 
 void subKeyProcess(int button) {
@@ -65,9 +69,7 @@ void getKeyInput() {
 					subKeyProcess(button);
 					setKeyTimer(button);
 				}
-				else {
-					resetKey(button);
-				}
+				else resetKey(button);
 			}
 			// Press and hold button
 			else {
