@@ -6,6 +6,7 @@
 
 int isButtonPressed(int button);
 int isButtonLongPressed(int button);
+int isButtonLongPressed(int button);
 void getKeyInput();
 
 #endif /* INC_BUTTON_H_ */

@@ -21,7 +21,7 @@
 #define BUTTON_INC				2
 #define BUTTON_PED				3
 
-#define NOMAL_STATE				GPIO_PIN_SET
+#define NORMAL_STATE				GPIO_PIN_SET
 #define PRESSED_STATE			GPIO_PIN_RESET
 
 /* Define for AUTO MODE ------------------------*/

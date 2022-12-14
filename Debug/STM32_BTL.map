@@ -16,13 +16,14 @@ Common symbol       size              file
 
 counter_for_key_pressed
                     0x10              ./Core/Src/button.o
-key_reg             0x4               ./Core/Src/button.o
+key_reg             0x10              ./Core/Src/button.o
 timer_counter       0x8               ./Core/Src/timer.o
 uwTick              0x4               ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
 pFlash              0x20              ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o
 htim3               0x48              ./Core/Src/main.o
 button_flag         0x10              ./Core/Src/button.o
 timer_flag          0x8               ./Core/Src/timer.o
+button_long_flag    0x10              ./Core/Src/button.o
 huart2              0x44              ./Core/Src/main.o
 
 Discarded input sections
@@ -136,7 +137,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0xca ./Core/Src/LEDs_display.o
  .debug_macro   0x0000000000000000       0x88 ./Core/Src/LEDs_display.o
  .debug_line    0x0000000000000000      0x724 ./Core/Src/LEDs_display.o
- .debug_str     0x0000000000000000    0x839ab ./Core/Src/LEDs_display.o
+ .debug_str     0x0000000000000000    0x839ac ./Core/Src/LEDs_display.o
  .comment       0x0000000000000000       0x54 ./Core/Src/LEDs_display.o
  .debug_frame   0x0000000000000000       0x70 ./Core/Src/LEDs_display.o
  .ARM.attributes
@@ -183,16 +184,24 @@ Discarded input sections
  .data          0x0000000000000000        0x0 ./Core/Src/button.o
  .bss           0x0000000000000000        0x0 ./Core/Src/button.o
  .text.isButtonPressed
-                0x0000000000000000       0x14 ./Core/Src/button.o
+                0x0000000000000000       0x34 ./Core/Src/button.o
  .text.isButtonLongPressed
-                0x0000000000000000       0x14 ./Core/Src/button.o
- .text.getKeyInput
-                0x0000000000000000        0xc ./Core/Src/button.o
- .debug_info    0x0000000000000000      0x2b3 ./Core/Src/button.o
- .debug_abbrev  0x0000000000000000      0x114 ./Core/Src/button.o
- .debug_aranges
+                0x0000000000000000       0x28 ./Core/Src/button.o
+ .text.subKeyProcess
+                0x0000000000000000       0x20 ./Core/Src/button.o
+ .text.subKeyLongProcess
+                0x0000000000000000       0x20 ./Core/Src/button.o
+ .text.resetKey
                 0x0000000000000000       0x30 ./Core/Src/button.o
- .debug_ranges  0x0000000000000000       0x20 ./Core/Src/button.o
+ .text.setKeyTimer
+                0x0000000000000000       0x34 ./Core/Src/button.o
+ .text.getKeyInput
+                0x0000000000000000      0x1a4 ./Core/Src/button.o
+ .debug_info    0x0000000000000000      0x413 ./Core/Src/button.o
+ .debug_abbrev  0x0000000000000000      0x18c ./Core/Src/button.o
+ .debug_aranges
+                0x0000000000000000       0x50 ./Core/Src/button.o
+ .debug_ranges  0x0000000000000000       0x40 ./Core/Src/button.o
  .debug_macro   0x0000000000000000      0x20f ./Core/Src/button.o
  .debug_macro   0x0000000000000000      0xa9c ./Core/Src/button.o
  .debug_macro   0x0000000000000000      0x21b ./Core/Src/button.o
@@ -232,13 +241,13 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x83 ./Core/Src/button.o
  .debug_macro   0x0000000000000000       0xca ./Core/Src/button.o
  .debug_macro   0x0000000000000000       0x88 ./Core/Src/button.o
- .debug_line    0x0000000000000000      0x71e ./Core/Src/button.o
- .debug_str     0x0000000000000000    0x839af ./Core/Src/button.o
+ .debug_line    0x0000000000000000      0x830 ./Core/Src/button.o
+ .debug_str     0x0000000000000000    0x83a21 ./Core/Src/button.o
  .comment       0x0000000000000000       0x54 ./Core/Src/button.o
- .debug_frame   0x0000000000000000       0x80 ./Core/Src/button.o
+ .debug_frame   0x0000000000000000      0x124 ./Core/Src/button.o
  .ARM.attributes
                 0x0000000000000000       0x2d ./Core/Src/button.o
- COMMON         0x0000000000000000       0x24 ./Core/Src/button.o
+ COMMON         0x0000000000000000       0x40 ./Core/Src/button.o
  .group         0x0000000000000000        0xc ./Core/Src/fsm_auto_mode.o
  .group         0x0000000000000000        0xc ./Core/Src/fsm_auto_mode.o
  .group         0x0000000000000000        0xc ./Core/Src/fsm_auto_mode.o
@@ -653,7 +662,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0xca ./Core/Src/global.o
  .debug_macro   0x0000000000000000       0x88 ./Core/Src/global.o
  .debug_line    0x0000000000000000      0x6e4 ./Core/Src/global.o
- .debug_str     0x0000000000000000    0x83922 ./Core/Src/global.o
+ .debug_str     0x0000000000000000    0x83923 ./Core/Src/global.o
  .comment       0x0000000000000000       0x54 ./Core/Src/global.o
  .ARM.attributes
                 0x0000000000000000       0x33 ./Core/Src/global.o
@@ -1205,15 +1214,15 @@ Discarded input sections
  .data          0x0000000000000000        0x0 ./Core/Src/timer.o
  .bss           0x0000000000000000        0x0 ./Core/Src/timer.o
  .text.currentCounter
-                0x0000000000000000       0x14 ./Core/Src/timer.o
+                0x0000000000000000       0x20 ./Core/Src/timer.o
  .text.isTimerUp
-                0x0000000000000000       0x14 ./Core/Src/timer.o
+                0x0000000000000000       0x28 ./Core/Src/timer.o
  .text.setTimer
-                0x0000000000000000       0x14 ./Core/Src/timer.o
+                0x0000000000000000       0x3c ./Core/Src/timer.o
  .text.timerRun
-                0x0000000000000000        0xc ./Core/Src/timer.o
- .debug_info    0x0000000000000000      0x29f ./Core/Src/timer.o
- .debug_abbrev  0x0000000000000000      0x130 ./Core/Src/timer.o
+                0x0000000000000000       0x60 ./Core/Src/timer.o
+ .debug_info    0x0000000000000000      0x2bd ./Core/Src/timer.o
+ .debug_abbrev  0x0000000000000000      0x14c ./Core/Src/timer.o
  .debug_aranges
                 0x0000000000000000       0x38 ./Core/Src/timer.o
  .debug_ranges  0x0000000000000000       0x28 ./Core/Src/timer.o
@@ -1256,10 +1265,10 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x83 ./Core/Src/timer.o
  .debug_macro   0x0000000000000000       0xca ./Core/Src/timer.o
  .debug_macro   0x0000000000000000       0x88 ./Core/Src/timer.o
- .debug_line    0x0000000000000000      0x731 ./Core/Src/timer.o
- .debug_str     0x0000000000000000    0x83974 ./Core/Src/timer.o
+ .debug_line    0x0000000000000000      0x76c ./Core/Src/timer.o
+ .debug_str     0x0000000000000000    0x83975 ./Core/Src/timer.o
  .comment       0x0000000000000000       0x54 ./Core/Src/timer.o
- .debug_frame   0x0000000000000000       0xa8 ./Core/Src/timer.o
+ .debug_frame   0x0000000000000000       0xb0 ./Core/Src/timer.o
  .ARM.attributes
                 0x0000000000000000       0x2d ./Core/Src/timer.o
  COMMON         0x0000000000000000       0x10 ./Core/Src/timer.o
@@ -3740,38 +3749,38 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_line    0x000000000000981e     0x1850 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o
  .debug_line    0x000000000000b06e     0x1a03 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o
 
-.debug_str      0x0000000000000000    0x86839
- .debug_str     0x0000000000000000    0x8360a ./Core/Src/fsm_auto_mode.o
-                                      0x83938 (size before relaxing)
- .debug_str     0x000000000008360a       0x2f ./Core/Src/fsm_manual_mode.o
-                                      0x8393c (size before relaxing)
- .debug_str     0x0000000000083639       0x37 ./Core/Src/fsm_pedestrian_mode.o
-                                      0x83944 (size before relaxing)
- .debug_str     0x0000000000083670       0x2f ./Core/Src/fsm_tuning_mode.o
-                                      0x8393c (size before relaxing)
- .debug_str     0x000000000008369f      0xbad ./Core/Src/main.o
+.debug_str      0x0000000000000000    0x8683a
+ .debug_str     0x0000000000000000    0x8360b ./Core/Src/fsm_auto_mode.o
+                                      0x83939 (size before relaxing)
+ .debug_str     0x000000000008360b       0x2f ./Core/Src/fsm_manual_mode.o
+                                      0x8393d (size before relaxing)
+ .debug_str     0x000000000008363a       0x37 ./Core/Src/fsm_pedestrian_mode.o
+                                      0x83945 (size before relaxing)
+ .debug_str     0x0000000000083671       0x2f ./Core/Src/fsm_tuning_mode.o
+                                      0x8393d (size before relaxing)
+ .debug_str     0x00000000000836a0      0xbad ./Core/Src/main.o
                                       0x8442f (size before relaxing)
- .debug_str     0x000000000008424c       0xce ./Core/Src/stm32f1xx_hal_msp.o
+ .debug_str     0x000000000008424d       0xce ./Core/Src/stm32f1xx_hal_msp.o
                                       0x83ecd (size before relaxing)
- .debug_str     0x000000000008431a       0xd2 ./Core/Src/stm32f1xx_it.o
+ .debug_str     0x000000000008431b       0xd2 ./Core/Src/stm32f1xx_it.o
                                       0x837ba (size before relaxing)
- .debug_str     0x00000000000843ec       0x52 ./Core/Src/system_stm32f1xx.o
+ .debug_str     0x00000000000843ed       0x52 ./Core/Src/system_stm32f1xx.o
                                       0x83430 (size before relaxing)
- .debug_str     0x000000000008443e       0x36 ./Core/Startup/startup_stm32f103rbtx.o
+ .debug_str     0x000000000008443f       0x36 ./Core/Startup/startup_stm32f103rbtx.o
                                          0x4d (size before relaxing)
- .debug_str     0x0000000000084474      0x304 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
+ .debug_str     0x0000000000084475      0x304 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
                                       0x83ac1 (size before relaxing)
- .debug_str     0x0000000000084778      0x300 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
+ .debug_str     0x0000000000084779      0x300 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
                                       0x83ac9 (size before relaxing)
- .debug_str     0x0000000000084a78      0x324 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
+ .debug_str     0x0000000000084a79      0x324 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
                                       0x837f4 (size before relaxing)
- .debug_str     0x0000000000084d9c      0x24f ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
+ .debug_str     0x0000000000084d9d      0x24f ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
                                       0x8382d (size before relaxing)
- .debug_str     0x0000000000084feb      0xd73 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o
+ .debug_str     0x0000000000084fec      0xd73 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o
                                       0x847ff (size before relaxing)
- .debug_str     0x0000000000085d5e      0x4ee ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o
+ .debug_str     0x0000000000085d5f      0x4ee ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o
                                       0x83fb0 (size before relaxing)
- .debug_str     0x000000000008624c      0x5ed ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o
+ .debug_str     0x000000000008624d      0x5ed ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o
                                       0x83e1f (size before relaxing)
 
 .comment        0x0000000000000000       0x53
