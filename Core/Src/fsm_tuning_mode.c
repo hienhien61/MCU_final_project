@@ -57,7 +57,7 @@ void fsmTuningModeRun() {
 
 			// Increase the time duration of the yellow LEDs when INC button is pressed or long pressed
 			if (isButtonPressed(BUTTON_INC) || isButtonLongPressed(BUTTON_INC)) {
-				time_count %= 100;
+				time_count %= 10;
 				time_count++;
 			}
 

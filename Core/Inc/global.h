@@ -11,7 +11,8 @@
 
 /* Define for TIMER ----------------------------*/
 // Timer0 for horizontal LEDs, Timer1 for vertical LEDs
-#define NO_OF_TIMER				2
+// Timer2 for timer counter to send UART
+#define NO_OF_TIMER				3
 
 /* Define for BUTTON ---------------------------*/
 #define NO_OF_BUTTON			4
@@ -21,7 +22,7 @@
 #define BUTTON_INC				2
 #define BUTTON_PED				3
 
-#define NORMAL_STATE				GPIO_PIN_SET
+#define NORMAL_STATE			GPIO_PIN_SET
 #define PRESSED_STATE			GPIO_PIN_RESET
 
 /* Define for AUTO MODE ------------------------*/
