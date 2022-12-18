@@ -5,9 +5,6 @@
 #include "main.h"
 
 void LEDsDisplay();
-void manRedDisplay();
-void manGreenDisplay();
-void manYellowDisplay();
 
 
 #endif /* INC_LEDS_DISPLAY_H_ */

@@ -122,24 +122,6 @@ void LEDsDisplay() {
 }
 
 
-void manRedDisplay(){
-	horizontal_status = AUTO_RED;
-	vertical_status = AUTO_RED;
-	LEDsDisplay();
-}
-
-void manGreenDisplay(){
-	horizontal_status = AUTO_GREEN;
-	vertical_status = AUTO_GREEN;
-	LEDsDisplay();
-}
-
-void manYellowDisplay(){
-	horizontal_status = AUTO_YELLOW;
-	vertical_status = AUTO_YELLOW;
-	LEDsDisplay();
-}
-
 
 
 
