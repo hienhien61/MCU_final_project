@@ -26,7 +26,9 @@ void fsmManualModeRun()
 		if (isButtonPressed(BUTTON_MODE))
 		{
 			mode = INC_RED;
+			time_count = RED_time / 1000;
 		}
+
 		break;
 
 	case MAN_GREEN:
@@ -45,7 +47,9 @@ void fsmManualModeRun()
 		if (isButtonPressed(BUTTON_MODE))
 		{
 			mode = INC_GREEN;
+			time_count = GREEN_time / 1000;
 		}
+
 		break;
 
 	case MAN_YELLOW:
@@ -64,7 +68,9 @@ void fsmManualModeRun()
 		if (isButtonPressed(BUTTON_MODE))
 		{
 			mode = INC_YELLOW;
+			time_count = YELLOW_time / 1000;
 		}
+
 		break;
 	}
 }

@@ -11,7 +11,6 @@
 
 /* Define for TIMER ----------------------------*/
 // Timer0 for horizontal LEDs, Timer1 for vertical LEDs
-// Timer2 for timer counter to send UART
 #define NO_OF_TIMER				3
 
 /* Define for BUTTON ---------------------------*/
