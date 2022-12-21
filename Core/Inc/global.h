@@ -8,6 +8,7 @@
 #include "fsm_manual_mode.h"
 #include "fsm_tuning_mode.h"
 #include "fsm_pedestrian_mode.h"
+#include "uart.h"
 
 /* Define for TIMER ----------------------------*/
 // Timer0 for horizontal LEDs, Timer1 for vertical LEDs, Timer2 for buzzer

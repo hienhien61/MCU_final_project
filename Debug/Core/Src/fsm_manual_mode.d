@@ -28,7 +28,7 @@ Core/Src/fsm_manual_mode.o: ../Core/Src/fsm_manual_mode.c \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  ../Core/Inc/LEDs_display.h ../Core/Inc/fsm_auto_mode.h \
  ../Core/Inc/fsm_manual_mode.h ../Core/Inc/fsm_tuning_mode.h \
- ../Core/Inc/fsm_pedestrian_mode.h
+ ../Core/Inc/fsm_pedestrian_mode.h ../Core/Inc/uart.h
 
 ../Core/Inc/fsm_manual_mode.h:
 
@@ -99,3 +99,5 @@ Core/Src/fsm_manual_mode.o: ../Core/Src/fsm_manual_mode.c \
 ../Core/Inc/fsm_tuning_mode.h:
 
 ../Core/Inc/fsm_pedestrian_mode.h:
+
+../Core/Inc/uart.h:

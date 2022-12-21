@@ -1,5 +1,5 @@
-Core/Src/global.o: ../Core/Src/global.c ../Core/Inc/global.h \
- ../Core/Inc/timer.h ../Core/Inc/global.h ../Core/Inc/button.h \
+Core/Src/uart.o: ../Core/Src/uart.c ../Core/Inc/uart.h \
+ ../Core/Inc/global.h ../Core/Inc/timer.h ../Core/Inc/button.h \
  ../Core/Inc/main.h ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -29,11 +29,11 @@ Core/Src/global.o: ../Core/Src/global.c ../Core/Inc/global.h \
  ../Core/Inc/fsm_manual_mode.h ../Core/Inc/fsm_tuning_mode.h \
  ../Core/Inc/fsm_pedestrian_mode.h ../Core/Inc/uart.h
 
+../Core/Inc/uart.h:
+
 ../Core/Inc/global.h:
 
 ../Core/Inc/timer.h:
-
-../Core/Inc/global.h:
 
 ../Core/Inc/button.h:
 
