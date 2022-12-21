@@ -4,7 +4,9 @@
 #include "global.h"
 #include "main.h"
 
-void LEDsDisplay();
+extern int horizontal_status;
+extern int vertical_status;
 
+void LEDsDisplay();
 
 #endif /* INC_LEDS_DISPLAY_H_ */

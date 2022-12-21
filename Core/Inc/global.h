@@ -10,7 +10,7 @@
 #include "fsm_pedestrian_mode.h"
 
 /* Define for TIMER ----------------------------*/
-// Timer0 for horizontal LEDs, Timer1 for vertical LEDs
+// Timer0 for horizontal LEDs, Timer1 for vertical LEDs, Timer2 for buzzer
 #define NO_OF_TIMER				3
 
 /* Define for BUTTON ---------------------------*/
@@ -42,9 +42,20 @@
 #define INC_GREEN				10
 #define INC_YELLOW				11
 
+/* Define for PEDESTRIAN MODE ------------------*/
+#define PED_OFF					12
+#define PED_ON					13
+#define WALK_ALLOW				14
+#define BUZZER_ON				15
+#define WALK_STOP				16
+
 /* Define for LEDs -----------------------------*/
 #define LED_ON					GPIO_PIN_SET
 #define LED_OFF					GPIO_PIN_RESET
+
+/* Define for Buzzer ---------------------------*/
+#define BUZZER_time				500
+#define BUZZER_pul				550
 
 /* Global Variables ----------------------------*/
 extern int timer_cycle;
