@@ -23,6 +23,8 @@ void fsmTuningModeRun() {
 				time_count++;
 			}
 
+			sendTimeInc();
+
 			break;
 
 		case INC_GREEN:
@@ -42,6 +44,8 @@ void fsmTuningModeRun() {
 				time_count++;
 			}
 
+			sendTimeInc();
+
 			break;
 
 		case INC_YELLOW:
@@ -60,6 +64,8 @@ void fsmTuningModeRun() {
 				time_count %= 10;
 				time_count++;
 			}
+
+			sendTimeInc();
 
 			break;
 

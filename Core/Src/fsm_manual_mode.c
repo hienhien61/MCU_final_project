@@ -29,6 +29,8 @@ void fsmManualModeRun()
 			time_count = RED_time / 1000;
 		}
 
+		sendTimeDuration();
+
 		break;
 
 	case MAN_GREEN:
@@ -50,6 +52,8 @@ void fsmManualModeRun()
 			time_count = GREEN_time / 1000;
 		}
 
+		sendTimeDuration();
+
 		break;
 
 	case MAN_YELLOW:
@@ -70,6 +74,8 @@ void fsmManualModeRun()
 			mode = INC_YELLOW;
 			time_count = YELLOW_time / 1000;
 		}
+
+		sendTimeDuration();
 
 		break;
 	}

@@ -16,6 +16,7 @@ void fsmAutoModeRun() {
 
 			// Display single LEDs according to the traffic rules
 			LEDsDisplay();
+			sendTimerCounter();
 
 			break;
 
