@@ -15,7 +15,7 @@ void sendTimerCounter() {
 	}
 
 	// Send current time counter of vertical traffic lights
-	else if (count2 != currentCounter(1) / 100) {
+	if (count2 != currentCounter(1) / 100) {
 	  count2 = currentCounter(1) / 100;
 	  HAL_UART_Transmit(&huart2, str, sprintf(str, "%s%d\r\n", "V: ", count2), 100);
 	}
