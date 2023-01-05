@@ -10,11 +10,13 @@ void fsmTuningModeRun() {
 			// Switch to AUTO MODE when press MODE button
 			if (isButtonPressed(BUTTON_MODE)) {
 				mode = AUTO_MODE;
+				sendModeNoti();
 			}
 
 			// Set the time duration of the red LEDs when press SET button
 			if (isButtonPressed(BUTTON_SET)) {
 				RED_time = time_count * 1000;
+				sendSetNoti();
 			}
 
 			// Increase the time duration of the red LEDs when INC button is pressed or long pressed
@@ -31,11 +33,13 @@ void fsmTuningModeRun() {
 			// Switch to AUTO MODE when press MODE button
 			if (isButtonPressed(BUTTON_MODE)) {
 				mode = AUTO_MODE;
+				sendModeNoti();
 			}
 
 			// Set the time duration of the green LEDs when press SET button
 			if (isButtonPressed(BUTTON_SET)) {
 				GREEN_time = time_count * 1000;
+				sendSetNoti();
 			}
 
 			// Increase the time duration of the green LEDs when INC button is pressed or long pressed
@@ -52,11 +56,13 @@ void fsmTuningModeRun() {
 			// Switch to AUTO MODE when press MODE button
 			if (isButtonPressed(BUTTON_MODE)) {
 				mode = AUTO_MODE;
+				sendModeNoti();
 			}
 
 			// Set the time duration of the yellow LEDs when press SET button
 			if (isButtonPressed(BUTTON_SET)) {
 				YELLOW_time = time_count * 1000;
+				sendSetNoti();
 			}
 
 			// Increase the time duration of the yellow LEDs when INC button is pressed or long pressed

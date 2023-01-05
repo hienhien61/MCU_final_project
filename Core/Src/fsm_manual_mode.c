@@ -35,6 +35,7 @@ void fsmManualModeRun()
 		{
 			mode = INC_RED;
 			time_count = RED_time / 1000;
+			sendModeNoti();
 		}
 
 		break;
@@ -62,6 +63,7 @@ void fsmManualModeRun()
 		{
 			mode = INC_GREEN;
 			time_count = GREEN_time / 1000;
+			sendModeNoti();
 		}
 
 		break;
@@ -89,6 +91,7 @@ void fsmManualModeRun()
 		{
 			mode = INC_YELLOW;
 			time_count = YELLOW_time / 1000;
+			sendModeNoti();
 		}
 
 		break;

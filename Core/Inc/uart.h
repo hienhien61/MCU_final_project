@@ -9,5 +9,7 @@ extern UART_HandleTypeDef huart2;
 void sendTimerCounter();
 void sendTimeDuration();
 void sendTimeInc();
+void sendModeNoti();
+void sendSetNoti();
 
 #endif /* INC_UART_H_ */

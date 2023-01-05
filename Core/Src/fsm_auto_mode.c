@@ -6,12 +6,14 @@ void fsmAutoModeRun() {
 	switch (mode) {
 		case MODE_INIT:
 			mode = AUTO_MODE;
+			sendModeNoti();
 			break;
 
 		case AUTO_MODE:
 			// Switch to MANUAL MODE when press MODE button
 			if (isButtonPressed(BUTTON_MODE)) {
 				mode = MAN_MODE;
+				sendModeNoti();
 			}
 
 			// Display single LEDs according to the traffic rules
