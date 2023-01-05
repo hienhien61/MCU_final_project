@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  00020094  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00016b1e  00000000  00000000  000200bd  2**0
+ 12 .debug_info   00016b02  00000000  00000000  000200bd  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00002e5f  00000000  00000000  00036bdb  2**0
+ 13 .debug_abbrev 00002e50  00000000  00000000  00036bbf  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00000d90  00000000  00000000  00039a40  2**3
+ 14 .debug_aranges 00000d90  00000000  00000000  00039a10  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 00000c50  00000000  00000000  0003a7d0  2**3
+ 15 .debug_ranges 00000c50  00000000  00000000  0003a7a0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  00019c1d  00000000  00000000  0003b420  2**0
+ 16 .debug_macro  00019c1d  00000000  00000000  0003b3f0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00011add  00000000  00000000  0005503d  2**0
+ 17 .debug_line   00011add  00000000  00000000  0005500d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    0008b2b5  00000000  00000000  00066b1a  2**0
+ 18 .debug_str    0008b2b5  00000000  00000000  00066aea  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000f1dcf  2**0
+ 19 .comment      00000053  00000000  00000000  000f1d9f  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00003980  00000000  00000000  000f1e24  2**2
+ 20 .debug_frame  00003980  00000000  00000000  000f1df4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1195,6 +1195,7 @@ void fsmVerPedRun(){
  8000870:	4b48      	ldr	r3, [pc, #288]	; (8000994 <fsmVerPedRun+0x160>)
  8000872:	2200      	movs	r2, #0
  8000874:	601a      	str	r2, [r3, #0]
+			//Bat che do nguoi di bo
 			if(isButtonPressed(BUTTON_PED)){
  8000876:	2003      	movs	r0, #3
  8000878:	f7ff fd96 	bl	80003a8 <isButtonPressed>
@@ -1213,6 +1214,7 @@ void fsmVerPedRun(){
 			break;
  800088e:	e06f      	b.n	8000970 <fsmVerPedRun+0x13c>
 		case PED_ON:
+			//Tat che do nguoi di bo
 			if(isButtonPressed(BUTTON_PED)){
  8000890:	2003      	movs	r0, #3
  8000892:	f7ff fd89 	bl	80003a8 <isButtonPressed>
@@ -1228,6 +1230,7 @@ void fsmVerPedRun(){
  80008a4:	220c      	movs	r2, #12
  80008a6:	601a      	str	r2, [r3, #0]
 			}
+			//Cho phep di
 			if(vertical_status == AUTO_RED){
  80008a8:	4b3c      	ldr	r3, [pc, #240]	; (800099c <fsmVerPedRun+0x168>)
  80008aa:	681b      	ldr	r3, [r3, #0]
@@ -1238,6 +1241,7 @@ void fsmVerPedRun(){
  80008b2:	220e      	movs	r2, #14
  80008b4:	601a      	str	r2, [r3, #0]
 			}
+			//Dung lai
 			if((vertical_status == AUTO_GREEN) || (vertical_status == AUTO_YELLOW)){
  80008b6:	4b39      	ldr	r3, [pc, #228]	; (800099c <fsmVerPedRun+0x168>)
  80008b8:	681b      	ldr	r3, [r3, #0]
@@ -1255,6 +1259,7 @@ void fsmVerPedRun(){
 			break;
  80008cc:	e052      	b.n	8000974 <fsmVerPedRun+0x140>
 		case WALK_ALLOW:
+			//Tat che do nguoi di bo
 			if(isButtonPressed(BUTTON_PED)){
  80008ce:	2003      	movs	r0, #3
  80008d0:	f7ff fd6a 	bl	80003a8 <isButtonPressed>
@@ -1270,6 +1275,7 @@ void fsmVerPedRun(){
  80008e2:	220c      	movs	r2, #12
  80008e4:	601a      	str	r2, [r3, #0]
 			}
+			//Thoi gian con 3s -> Bat buzzer
 			if(currentCounter(1) <= 3000){
  80008e6:	2001      	movs	r0, #1
  80008e8:	f000 fe32 	bl	8001550 <currentCounter>
@@ -1289,6 +1295,7 @@ void fsmVerPedRun(){
 			break;
  8000904:	e038      	b.n	8000978 <fsmVerPedRun+0x144>
 		case BUZZER_ON:
+			//Tat che do nguoi di bo
 			if(isButtonPressed(BUTTON_PED)){
  8000906:	2003      	movs	r0, #3
  8000908:	f7ff fd4e 	bl	80003a8 <isButtonPressed>
@@ -1304,6 +1311,7 @@ void fsmVerPedRun(){
  800091a:	220c      	movs	r2, #12
  800091c:	601a      	str	r2, [r3, #0]
 			}
+			//Dung lai
 			if(vertical_status == AUTO_GREEN){
  800091e:	4b1f      	ldr	r3, [pc, #124]	; (800099c <fsmVerPedRun+0x168>)
  8000920:	681b      	ldr	r3, [r3, #0]
@@ -1330,6 +1338,7 @@ void fsmVerPedRun(){
 			break;
  8000942:	e01b      	b.n	800097c <fsmVerPedRun+0x148>
 		case WALK_STOP:
+			//Tat che do nguoi di bo
 			if(isButtonPressed(BUTTON_PED)){
  8000944:	2003      	movs	r0, #3
  8000946:	f7ff fd2f 	bl	80003a8 <isButtonPressed>
@@ -1345,6 +1354,7 @@ void fsmVerPedRun(){
  8000958:	220c      	movs	r2, #12
  800095a:	601a      	str	r2, [r3, #0]
 			}
+			//Cho phep di
 			if(vertical_status == AUTO_RED){
  800095c:	4b0f      	ldr	r3, [pc, #60]	; (800099c <fsmVerPedRun+0x168>)
  800095e:	681b      	ldr	r3, [r3, #0]
@@ -1420,6 +1430,7 @@ void fsmHorPedRun(){
  80009dc:	4b48      	ldr	r3, [pc, #288]	; (8000b00 <fsmHorPedRun+0x160>)
  80009de:	2200      	movs	r2, #0
  80009e0:	601a      	str	r2, [r3, #0]
+			//Bat che do nguoi di bo
 			if(isButtonPressed(BUTTON_PED)){
  80009e2:	2003      	movs	r0, #3
  80009e4:	f7ff fce0 	bl	80003a8 <isButtonPressed>
@@ -1438,6 +1449,7 @@ void fsmHorPedRun(){
 			break;
  80009fa:	e06f      	b.n	8000adc <fsmHorPedRun+0x13c>
 		case PED_ON:
+			//Tat che do nguoi di bo
 			if(isButtonPressed(BUTTON_PED)){
  80009fc:	2003      	movs	r0, #3
  80009fe:	f7ff fcd3 	bl	80003a8 <isButtonPressed>
@@ -1453,6 +1465,7 @@ void fsmHorPedRun(){
  8000a10:	220c      	movs	r2, #12
  8000a12:	601a      	str	r2, [r3, #0]
 			}
+			//Cho phep di
 			if(horizontal_status == AUTO_RED){
  8000a14:	4b3c      	ldr	r3, [pc, #240]	; (8000b08 <fsmHorPedRun+0x168>)
  8000a16:	681b      	ldr	r3, [r3, #0]
@@ -1463,6 +1476,7 @@ void fsmHorPedRun(){
  8000a1e:	220e      	movs	r2, #14
  8000a20:	601a      	str	r2, [r3, #0]
 			}
+			//Dung lai
 			if((horizontal_status == AUTO_GREEN) || (horizontal_status == AUTO_YELLOW)){
  8000a22:	4b39      	ldr	r3, [pc, #228]	; (8000b08 <fsmHorPedRun+0x168>)
  8000a24:	681b      	ldr	r3, [r3, #0]
@@ -1480,6 +1494,7 @@ void fsmHorPedRun(){
 			break;
  8000a38:	e052      	b.n	8000ae0 <fsmHorPedRun+0x140>
 		case WALK_ALLOW:
+			//Tat che do nguoi di bo
 			if(isButtonPressed(BUTTON_PED)){
  8000a3a:	2003      	movs	r0, #3
  8000a3c:	f7ff fcb4 	bl	80003a8 <isButtonPressed>
@@ -1495,6 +1510,7 @@ void fsmHorPedRun(){
  8000a4e:	220c      	movs	r2, #12
  8000a50:	601a      	str	r2, [r3, #0]
 			}
+			//Thoi gian con 3s -> Bat buzzer
 			if(currentCounter(0) <= 3000){
  8000a52:	2000      	movs	r0, #0
  8000a54:	f000 fd7c 	bl	8001550 <currentCounter>
@@ -1514,6 +1530,7 @@ void fsmHorPedRun(){
 			break;
  8000a70:	e038      	b.n	8000ae4 <fsmHorPedRun+0x144>
 		case BUZZER_ON:
+			//Tat che do nguoi di bo
 			if(isButtonPressed(BUTTON_PED)){
  8000a72:	2003      	movs	r0, #3
  8000a74:	f7ff fc98 	bl	80003a8 <isButtonPressed>
@@ -1529,6 +1546,7 @@ void fsmHorPedRun(){
  8000a86:	220c      	movs	r2, #12
  8000a88:	601a      	str	r2, [r3, #0]
 			}
+			//Dung lai
 			if(horizontal_status == AUTO_GREEN){
  8000a8a:	4b1f      	ldr	r3, [pc, #124]	; (8000b08 <fsmHorPedRun+0x168>)
  8000a8c:	681b      	ldr	r3, [r3, #0]
@@ -1555,6 +1573,7 @@ void fsmHorPedRun(){
 			break;
  8000aae:	e01b      	b.n	8000ae8 <fsmHorPedRun+0x148>
 		case WALK_STOP:
+			//Tat che do nguoi di bo
 			if(isButtonPressed(BUTTON_PED)){
  8000ab0:	2003      	movs	r0, #3
  8000ab2:	f7ff fc79 	bl	80003a8 <isButtonPressed>
@@ -1570,6 +1589,7 @@ void fsmHorPedRun(){
  8000ac4:	220c      	movs	r2, #12
  8000ac6:	601a      	str	r2, [r3, #0]
 			}
+			//Cho phep di
 			if(horizontal_status == AUTO_RED){
  8000ac8:	4b0f      	ldr	r3, [pc, #60]	; (8000b08 <fsmHorPedRun+0x168>)
  8000aca:	681b      	ldr	r3, [r3, #0]
@@ -1670,6 +1690,7 @@ void fsmPedestrianModeRun() {
 			break;
  8000b76:	e070      	b.n	8000c5a <fsmPedestrianModeRun+0x14e>
 		case BUZZER_ON:
+			//Buzzer se to dan va nhanh hon khi thoi gian gan het
 			if(isTimerUp(3) && state == 1){
  8000b78:	2003      	movs	r0, #3
  8000b7a:	f000 fcf9 	bl	8001570 <isTimerUp>
@@ -1844,6 +1865,7 @@ void fsmPedestrianModeRun() {
 			break;
  8000cba:	e071      	b.n	8000da0 <fsmPedestrianModeRun+0x294>
 		case BUZZER_ON:
+			//Buzzer se to dan va nhanh hon khi thoi gian gan het
 			if(isTimerUp(2) && state == 1){
  8000cbc:	2002      	movs	r0, #2
  8000cbe:	f000 fc57 	bl	8001570 <isTimerUp>
@@ -2577,7 +2599,7 @@ static void MX_USART2_UART_Init(void)
  800113e:	bf00      	nop
  8001140:	bd80      	pop	{r7, pc}
  8001142:	bf00      	nop
- 8001144:	20000164 	.word	0x20000164
+ 8001144:	20000184 	.word	0x20000184
  8001148:	40004400 	.word	0x40004400
 
 0800114c <MX_GPIO_Init>:
@@ -3302,7 +3324,7 @@ void USART2_IRQHandler(void)
  80014be:	bf00      	nop
  80014c0:	bd80      	pop	{r7, pc}
  80014c2:	bf00      	nop
- 80014c4:	20000164 	.word	0x20000164
+ 80014c4:	20000184 	.word	0x20000184
 
 080014c8 <EXTI15_10_IRQHandler>:
 
@@ -3449,7 +3471,7 @@ int currentCounter(int timer) {
  8001566:	bc80      	pop	{r7}
  8001568:	4770      	bx	lr
  800156a:	bf00      	nop
- 800156c:	200001a8 	.word	0x200001a8
+ 800156c:	20000164 	.word	0x20000164
 
 08001570 <isTimerUp>:
 
@@ -3473,7 +3495,7 @@ int isTimerUp(int timer) {
  800158e:	46bd      	mov	sp, r7
  8001590:	bc80      	pop	{r7}
  8001592:	4770      	bx	lr
- 8001594:	200001b8 	.word	0x200001b8
+ 8001594:	20000174 	.word	0x20000174
 
 08001598 <setTimer>:
 
@@ -3503,8 +3525,8 @@ void setTimer(int timer, int duration){
  80015c4:	bc80      	pop	{r7}
  80015c6:	4770      	bx	lr
  80015c8:	20000010 	.word	0x20000010
- 80015cc:	200001a8 	.word	0x200001a8
- 80015d0:	200001b8 	.word	0x200001b8
+ 80015cc:	20000164 	.word	0x20000164
+ 80015d0:	20000174 	.word	0x20000174
 
 080015d4 <timerRun>:
 void timerRun(){
@@ -3557,8 +3579,8 @@ void timerRun(){
  8001626:	46bd      	mov	sp, r7
  8001628:	bc80      	pop	{r7}
  800162a:	4770      	bx	lr
- 800162c:	200001a8 	.word	0x200001a8
- 8001630:	200001b8 	.word	0x200001b8
+ 800162c:	20000164 	.word	0x20000164
+ 8001630:	20000174 	.word	0x20000174
 
 08001634 <sendTimerCounter>:
 int count1 = 0;
@@ -3659,7 +3681,7 @@ void sendTimerCounter() {
  80016e8:	08004a60 	.word	0x08004a60
  80016ec:	08004a64 	.word	0x08004a64
  80016f0:	200001c8 	.word	0x200001c8
- 80016f4:	20000164 	.word	0x20000164
+ 80016f4:	20000184 	.word	0x20000184
  80016f8:	200000d0 	.word	0x200000d0
  80016fc:	08004a6c 	.word	0x08004a6c
 
@@ -3831,7 +3853,7 @@ void sendTimeDuration() {
  800182c:	08004a70 	.word	0x08004a70
  8001830:	08004a64 	.word	0x08004a64
  8001834:	200001c8 	.word	0x200001c8
- 8001838:	20000164 	.word	0x20000164
+ 8001838:	20000184 	.word	0x20000184
  800183c:	2000001c 	.word	0x2000001c
  8001840:	08004a78 	.word	0x08004a78
  8001844:	20000020 	.word	0x20000020
@@ -3875,7 +3897,7 @@ void sendTimeInc() {
  8001888:	200000bc 	.word	0x200000bc
  800188c:	08004a90 	.word	0x08004a90
  8001890:	200001c8 	.word	0x200001c8
- 8001894:	20000164 	.word	0x20000164
+ 8001894:	20000184 	.word	0x20000184
 
 08001898 <Reset_Handler>:
   .weak Reset_Handler
