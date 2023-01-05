@@ -14,7 +14,7 @@ void fsmVerPedRun(){
 			//Reset buzzer
 			buzzer_time = BUZZER_time;
 			pul = BUZZER_pul;
-			state = 1;
+			state = 0;
 			if(isButtonPressed(BUTTON_PED)){
 				ver_ped = PED_ON;
 				hor_ped = PED_ON;
@@ -37,9 +37,9 @@ void fsmVerPedRun(){
 				ver_ped = PED_OFF;
 				hor_ped = PED_OFF;
 			}
-			if(currentCounter(1) <= 300){
+			if(currentCounter(1) <= 3000){
 				ver_ped = BUZZER_ON;
-				setTimer(2, 100);
+				setTimer(3, 100);
 			}
 			break;
 		case BUZZER_ON:
@@ -75,7 +75,7 @@ void fsmHorPedRun(){
 			//Reset buzzer
 			buzzer_time = BUZZER_time;
 			pul = BUZZER_pul;
-			state = 1;
+			state = 0;
 			if(isButtonPressed(BUTTON_PED)){
 				ver_ped = PED_ON;
 				hor_ped = PED_ON;
@@ -98,7 +98,7 @@ void fsmHorPedRun(){
 				ver_ped = PED_OFF;
 				hor_ped = PED_OFF;
 			}
-			if(currentCounter(0) <= 300){
+			if(currentCounter(0) <= 3000){
 				hor_ped = BUZZER_ON;
 				setTimer(2, 100);
 			}
@@ -138,6 +138,7 @@ void fsmPedestrianModeRun() {
 		case PED_OFF:
 			HAL_GPIO_WritePin(LED_RED_P2_GPIO_Port, LED_RED_P2_Pin, LED_OFF);
 			HAL_GPIO_WritePin(LED_GREEN_P2_GPIO_Port, LED_GREEN_P2_Pin, LED_OFF);
+			__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_2, 0);
 			break;
 		case PED_ON:
 			break;
@@ -146,16 +147,16 @@ void fsmPedestrianModeRun() {
 			HAL_GPIO_WritePin(LED_GREEN_P2_GPIO_Port, LED_GREEN_P2_Pin, LED_ON);
 			break;
 		case BUZZER_ON:
-			if(isTimerUp(2) && state == 1){
+			if(isTimerUp(3) && state == 1){
 				__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_2, pul);
-				setTimer(2, buzzer_time);
+				setTimer(3, buzzer_time);
 				state = 1 - state;
 				if(pul < 950) pul += 100;
 				if(buzzer_time > 100) buzzer_time -= 100;
 			}
-			if(isTimerUp(2) && state == 0){
+			if(isTimerUp(3) && state == 0){
 				__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_2, 0);
-				setTimer(2, buzzer_time);
+				setTimer(3, buzzer_time);
 				state = 1 - state;
 				if(pul < 950) pul += 100;
 				if(buzzer_time > 100) buzzer_time -= 100;
@@ -164,6 +165,7 @@ void fsmPedestrianModeRun() {
 		case WALK_STOP:
 			HAL_GPIO_WritePin(LED_RED_P2_GPIO_Port, LED_RED_P2_Pin, LED_ON);
 			HAL_GPIO_WritePin(LED_GREEN_P2_GPIO_Port, LED_GREEN_P2_Pin, LED_OFF);
+			__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_2, 0);
 			break;
 		default:
 			break;
@@ -173,6 +175,7 @@ void fsmPedestrianModeRun() {
 		case PED_OFF:
 			HAL_GPIO_WritePin(LED_RED_P1_GPIO_Port, LED_RED_P1_Pin, LED_OFF);
 			HAL_GPIO_WritePin(LED_GREEN_P1_GPIO_Port, LED_GREEN_P1_Pin, LED_OFF);
+			__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, 0);
 			break;
 		case PED_ON:
 			break;
@@ -199,6 +202,7 @@ void fsmPedestrianModeRun() {
 		case WALK_STOP:
 			HAL_GPIO_WritePin(LED_RED_P1_GPIO_Port, LED_RED_P1_Pin, LED_ON);
 			HAL_GPIO_WritePin(LED_GREEN_P1_GPIO_Port, LED_GREEN_P1_Pin, LED_OFF);
+			__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, 0);
 			break;
 		default:
 			break;
