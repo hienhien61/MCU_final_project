@@ -11,8 +11,9 @@
 #include "uart.h"
 
 /* Define for TIMER ----------------------------*/
-// Timer0 for horizontal LEDs, Timer1 for vertical LEDs, Timer2 for buzzer
-#define NO_OF_TIMER				3
+// Timer0 for horizontal LEDs, Timer1 for vertical LEDs,
+// Timer2 for horizontal buzzer, Timer3 for vertical buzzer
+#define NO_OF_TIMER				4
 
 /* Define for BUTTON ---------------------------*/
 #define NO_OF_BUTTON			4
