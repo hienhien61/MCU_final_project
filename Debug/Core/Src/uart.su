@@ -1,3 +1,3 @@
 uart.c:9:6:sendTimerCounter	8	static
-uart.c:21:6:sendTimeDuration	8	static
-uart.c:53:6:sendTimeInc	8	static
+uart.c:24:6:sendTimeDuration	8	static
+uart.c:59:6:sendTimeInc	8	static

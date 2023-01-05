@@ -7,19 +7,24 @@ void fsmManualModeRun()
 	switch (mode)
 	{
 	case MAN_MODE:
+		// Switch to MAN_RED
 		sendTimeDuration();
 		mode = MAN_RED;
 		break;
 
 	case MAN_RED:
+
+		// Turn on red lights
 		HAL_GPIO_WritePin(LED_RED_1_GPIO_Port, LED_RED_1_Pin, LED_ON);
 		HAL_GPIO_WritePin(LED_GREEN_1_GPIO_Port, LED_GREEN_1_Pin, LED_OFF);
 
 		HAL_GPIO_WritePin(LED_RED_2_GPIO_Port, LED_RED_2_Pin, LED_ON);
 		HAL_GPIO_WritePin(LED_GREEN_2_GPIO_Port, LED_GREEN_2_Pin, LED_OFF);
 
+		// Send duration time of red lights
 		sendTimeDuration();
 
+		// Switch to MAN_GREEN when press SET button
 		if (isButtonPressed(BUTTON_SET))
 		{
 			mode = MAN_GREEN;
@@ -35,14 +40,18 @@ void fsmManualModeRun()
 		break;
 
 	case MAN_GREEN:
+
+		// Turn on green lights
 		HAL_GPIO_WritePin(LED_RED_1_GPIO_Port, LED_RED_1_Pin, LED_OFF);
 		HAL_GPIO_WritePin(LED_GREEN_1_GPIO_Port, LED_GREEN_1_Pin, LED_ON);
 
 		HAL_GPIO_WritePin(LED_RED_2_GPIO_Port, LED_RED_2_Pin, LED_OFF);
 		HAL_GPIO_WritePin(LED_GREEN_2_GPIO_Port, LED_GREEN_2_Pin, LED_ON);
 
+		// Send duration time of green lights
 		sendTimeDuration();
 
+		// Switch to MAN_YELLOW when press SET button
 		if (isButtonPressed(BUTTON_SET))
 		{
 			mode = MAN_YELLOW;
@@ -58,14 +67,18 @@ void fsmManualModeRun()
 		break;
 
 	case MAN_YELLOW:
+
+		// Turn on yellow lights
 		HAL_GPIO_WritePin(LED_RED_1_GPIO_Port, LED_RED_1_Pin, LED_ON);
 		HAL_GPIO_WritePin(LED_GREEN_1_GPIO_Port, LED_GREEN_1_Pin, LED_ON);
 
 		HAL_GPIO_WritePin(LED_RED_2_GPIO_Port, LED_RED_2_Pin, LED_ON);
 		HAL_GPIO_WritePin(LED_GREEN_2_GPIO_Port, LED_GREEN_2_Pin, LED_ON);
 
+		// Send duration time of yellow lights
 		sendTimeDuration();
 
+		// Switch to MAN_RED when press SET button
 		if (isButtonPressed(BUTTON_SET))
 		{
 			mode = MAN_RED;

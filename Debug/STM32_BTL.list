@@ -930,6 +930,7 @@ void fsmManualModeRun()
  80006bc:	0800079d 	.word	0x0800079d
 	{
 	case MAN_MODE:
+		// Switch to MAN_RED
 		sendTimeDuration();
  80006c0:	f001 f80a 	bl	80016d8 <sendTimeDuration>
 		mode = MAN_RED;
@@ -940,6 +941,8 @@ void fsmManualModeRun()
  80006ca:	e0a0      	b.n	800080e <fsmManualModeRun+0x176>
 
 	case MAN_RED:
+
+		// Turn on red lights
 		HAL_GPIO_WritePin(LED_RED_1_GPIO_Port, LED_RED_1_Pin, LED_ON);
  80006cc:	2201      	movs	r2, #1
  80006ce:	f44f 6180 	mov.w	r1, #1024	; 0x400
@@ -962,9 +965,11 @@ void fsmManualModeRun()
  80006f0:	484a      	ldr	r0, [pc, #296]	; (800081c <fsmManualModeRun+0x184>)
  80006f2:	f001 fc9e 	bl	8002032 <HAL_GPIO_WritePin>
 
+		// Send duration time of red lights
 		sendTimeDuration();
  80006f6:	f000 ffef 	bl	80016d8 <sendTimeDuration>
 
+		// Switch to MAN_GREEN when press SET button
 		if (isButtonPressed(BUTTON_SET))
  80006fa:	2001      	movs	r0, #1
  80006fc:	f7ff fe54 	bl	80003a8 <isButtonPressed>
@@ -1006,6 +1011,8 @@ void fsmManualModeRun()
  8000732:	e067      	b.n	8000804 <fsmManualModeRun+0x16c>
 
 	case MAN_GREEN:
+
+		// Turn on green lights
 		HAL_GPIO_WritePin(LED_RED_1_GPIO_Port, LED_RED_1_Pin, LED_OFF);
  8000734:	2200      	movs	r2, #0
  8000736:	f44f 6180 	mov.w	r1, #1024	; 0x400
@@ -1028,9 +1035,11 @@ void fsmManualModeRun()
  8000758:	4830      	ldr	r0, [pc, #192]	; (800081c <fsmManualModeRun+0x184>)
  800075a:	f001 fc6a 	bl	8002032 <HAL_GPIO_WritePin>
 
+		// Send duration time of green lights
 		sendTimeDuration();
  800075e:	f000 ffbb 	bl	80016d8 <sendTimeDuration>
 
+		// Switch to MAN_YELLOW when press SET button
 		if (isButtonPressed(BUTTON_SET))
  8000762:	2001      	movs	r0, #1
  8000764:	f7ff fe20 	bl	80003a8 <isButtonPressed>
@@ -1072,6 +1081,8 @@ void fsmManualModeRun()
  800079a:	e035      	b.n	8000808 <fsmManualModeRun+0x170>
 
 	case MAN_YELLOW:
+
+		// Turn on yellow lights
 		HAL_GPIO_WritePin(LED_RED_1_GPIO_Port, LED_RED_1_Pin, LED_ON);
  800079c:	2201      	movs	r2, #1
  800079e:	f44f 6180 	mov.w	r1, #1024	; 0x400
@@ -1094,9 +1105,11 @@ void fsmManualModeRun()
  80007c0:	4816      	ldr	r0, [pc, #88]	; (800081c <fsmManualModeRun+0x184>)
  80007c2:	f001 fc36 	bl	8002032 <HAL_GPIO_WritePin>
 
+		// Send duration time of yellow lights
 		sendTimeDuration();
  80007c6:	f000 ff87 	bl	80016d8 <sendTimeDuration>
 
+		// Switch to MAN_RED when press SET button
 		if (isButtonPressed(BUTTON_SET))
  80007ca:	2001      	movs	r0, #1
  80007cc:	f7ff fdec 	bl	80003a8 <isButtonPressed>
@@ -3545,6 +3558,8 @@ UART_HandleTypeDef huart2;
 void sendTimerCounter() {
  800160c:	b580      	push	{r7, lr}
  800160e:	af00      	add	r7, sp, #0
+
+	// Send current time counter of horizontal traffic lights
 	if (count1 != currentCounter(0) / 100) {
  8001610:	2000      	movs	r0, #0
  8001612:	f7ff ff89 	bl	8001528 <currentCounter>
@@ -3582,7 +3597,7 @@ void sendTimerCounter() {
  8001658:	491b      	ldr	r1, [pc, #108]	; (80016c8 <sendTimerCounter+0xbc>)
  800165a:	481c      	ldr	r0, [pc, #112]	; (80016cc <sendTimerCounter+0xc0>)
  800165c:	f002 f8e9 	bl	8003832 <HAL_UART_Transmit>
-
+	// Send current time counter of vertical traffic lights
 	else if (count2 != currentCounter(1) / 100) {
 	  count2 = currentCounter(1) / 100;
 	  HAL_UART_Transmit(&huart2, str, sprintf(str, "%s%d\r\n", "V: ", count2), 100);
@@ -3665,6 +3680,7 @@ void sendTimeDuration() {
  8001702:	e075      	b.n	80017f0 <sendTimeDuration+0x118>
 
 		case MAN_RED:
+			// Send duration time of red lights
 			if (count != RED_time / 1000) {
  8001704:	4b3d      	ldr	r3, [pc, #244]	; (80017fc <sendTimeDuration+0x124>)
  8001706:	681b      	ldr	r3, [r3, #0]
@@ -3705,6 +3721,7 @@ void sendTimeDuration() {
  800174c:	e04b      	b.n	80017e6 <sendTimeDuration+0x10e>
 
 		case MAN_GREEN:
+			// Send duration time of green lights
 			if (count != GREEN_time / 1000) {
  800174e:	4b31      	ldr	r3, [pc, #196]	; (8001814 <sendTimeDuration+0x13c>)
  8001750:	681b      	ldr	r3, [r3, #0]
@@ -3745,6 +3762,7 @@ void sendTimeDuration() {
  8001796:	e028      	b.n	80017ea <sendTimeDuration+0x112>
 
 		case MAN_YELLOW:
+			// Send duration time of yellow lights
 			if (count != YELLOW_time / 1000) {
  8001798:	4b20      	ldr	r3, [pc, #128]	; (800181c <sendTimeDuration+0x144>)
  800179a:	681b      	ldr	r3, [r3, #0]
@@ -3818,6 +3836,7 @@ void sendTimeDuration() {
 void sendTimeInc() {
  8001824:	b580      	push	{r7, lr}
  8001826:	af00      	add	r7, sp, #0
+	// Send counter to increase duration time of lights
 	if (count != time_count) {
  8001828:	4b0c      	ldr	r3, [pc, #48]	; (800185c <sendTimeInc+0x38>)
  800182a:	681a      	ldr	r2, [r3, #0]
