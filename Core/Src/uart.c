@@ -14,12 +14,16 @@ void sendTimerCounter() {
 
 	else if (count2 != currentCounter(1) / 100) {
 	  count2 = currentCounter(1) / 100;
-	  HAL_UART_Transmit(&huart2, str, sprintf(str, "%s%d\r\n", "L: ", count2), 100);
+	  HAL_UART_Transmit(&huart2, str, sprintf(str, "%s%d\r\n", "V: ", count2), 100);
 	}
 }
 
 void sendTimeDuration() {
 	switch (mode) {
+		case MAN_MODE:
+			count = 0;
+			break;
+
 		case MAN_RED:
 			if (count != RED_time / 1000) {
 				count = RED_time / 1000;
