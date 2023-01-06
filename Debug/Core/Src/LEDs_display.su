@@ -1,3 +1,4 @@
 LEDs_display.c:6:6:fsmHorLEDsRun	8	static
 LEDs_display.c:42:6:fsmVerLEDsRun	8	static
 LEDs_display.c:77:6:LEDsDisplay	8	static
+LEDs_display.c:124:6:resetLights	4	static

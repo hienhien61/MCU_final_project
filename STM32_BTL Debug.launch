@@ -30,11 +30,7 @@
     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.external_loader_init" value="false"/>
     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.frequency" value="0"/>
     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.halt_all_on_reset" value="false"/>
-<<<<<<< HEAD
     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.log_file" value="D:\VXL\BTL\STM32\Debug\st-link_gdbserver_log.txt"/>
-=======
-    <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.log_file" value="D:\university\HK221\VXL\Labs\Final project\Git2\MCU_final_project\Debug\st-link_gdbserver_log.txt"/>
->>>>>>> 4be091b01f1f55cc88df7781ffca3b1f0d8290e2
     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.low_power_debug" value="enable"/>
     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.max_halt_delay" value="2"/>
     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.reset_strategy" value="connect_under_reset"/>

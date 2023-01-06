@@ -15,47 +15,47 @@ void fsmVerPedRun(){
 			buzzer_time = BUZZER_time;
 			pul = BUZZER_pul;
 			state = 0;
-			//Bat che do nguoi di bo
+			//Turn on pedestrian mode
 			if(isButtonPressed(BUTTON_PED)){
 				ver_ped = PED_ON;
 				hor_ped = PED_ON;
 			}
 			break;
 		case PED_ON:
-			//Tat che do nguoi di bo
+			//Turn off pedestrian mode
 			if(isButtonPressed(BUTTON_PED)){
 				ver_ped = PED_OFF;
 				hor_ped = PED_OFF;
 			}
-			//Cho phep di
+			//Allow walk
 			if(vertical_status == AUTO_RED){
 				ver_ped = WALK_ALLOW;
 			}
-			//Dung lai
+			//Stop walk
 			if((vertical_status == AUTO_GREEN) || (vertical_status == AUTO_YELLOW)){
 				ver_ped = WALK_STOP;
 			}
 			break;
 		case WALK_ALLOW:
-			//Tat che do nguoi di bo
+			//Turn off pedestrian mode
 			if(isButtonPressed(BUTTON_PED)){
 				ver_ped = PED_OFF;
 				hor_ped = PED_OFF;
 			}
-			//Thoi gian con 3s -> Bat buzzer
-			if(currentCounter(1) <= 3000){
+			//3 seconds left -> turn on buzzer
+			if((currentCounter(1) <= 3000) && (mode == AUTO_MODE)){
 				ver_ped = BUZZER_ON;
 				setTimer(3, 100);
 			}
 			break;
 		case BUZZER_ON:
-			//Tat che do nguoi di bo
+			//Turn off pedestrian mode
 			if(isButtonPressed(BUTTON_PED)){
 				ver_ped = PED_OFF;
 				hor_ped = PED_OFF;
 			}
-			//Dung lai
-			if(vertical_status == AUTO_GREEN){
+			//Stop walk
+			if(vertical_status == AUTO_GREEN || mode != AUTO_MODE){
 				ver_ped = WALK_STOP;
 				//Reset buzzer
 				buzzer_time = BUZZER_time;
@@ -64,12 +64,12 @@ void fsmVerPedRun(){
 			}
 			break;
 		case WALK_STOP:
-			//Tat che do nguoi di bo
+			//Turn off pedestrian mode
 			if(isButtonPressed(BUTTON_PED)){
 				ver_ped = PED_OFF;
 				hor_ped = PED_OFF;
 			}
-			//Cho phep di
+			//Allow walk
 			if(vertical_status == AUTO_RED){
 				ver_ped = WALK_ALLOW;
 			}
@@ -86,47 +86,47 @@ void fsmHorPedRun(){
 			buzzer_time = BUZZER_time;
 			pul = BUZZER_pul;
 			state = 0;
-			//Bat che do nguoi di bo
+			//Turn on pedestrian mode
 			if(isButtonPressed(BUTTON_PED)){
 				ver_ped = PED_ON;
 				hor_ped = PED_ON;
 			}
 			break;
 		case PED_ON:
-			//Tat che do nguoi di bo
+			//Turn off pedestrian mode
 			if(isButtonPressed(BUTTON_PED)){
 				ver_ped = PED_OFF;
 				hor_ped = PED_OFF;
 			}
-			//Cho phep di
+			//Allow walk
 			if(horizontal_status == AUTO_RED){
 				hor_ped = WALK_ALLOW;
 			}
-			//Dung lai
+			//Stop walk
 			if((horizontal_status == AUTO_GREEN) || (horizontal_status == AUTO_YELLOW)){
 				hor_ped = WALK_STOP;
 			}
 			break;
 		case WALK_ALLOW:
-			//Tat che do nguoi di bo
+			//Turn off pedestrian mode
 			if(isButtonPressed(BUTTON_PED)){
 				ver_ped = PED_OFF;
 				hor_ped = PED_OFF;
 			}
-			//Thoi gian con 3s -> Bat buzzer
-			if(currentCounter(0) <= 3000){
+			//3 seconds left -> turn on buzzer
+			if((currentCounter(0) <= 3000) && (mode == AUTO_MODE)){
 				hor_ped = BUZZER_ON;
 				setTimer(2, 100);
 			}
 			break;
 		case BUZZER_ON:
-			//Tat che do nguoi di bo
+			//Turn off pedestrian mode
 			if(isButtonPressed(BUTTON_PED)){
 				ver_ped = PED_OFF;
 				hor_ped = PED_OFF;
 			}
-			//Dung lai
-			if(horizontal_status == AUTO_GREEN){
+			//Stop walk
+			if(horizontal_status == AUTO_GREEN || mode != AUTO_MODE){
 				hor_ped = WALK_STOP;
 				//Reset buzzer
 				buzzer_time = BUZZER_time;
@@ -135,12 +135,12 @@ void fsmHorPedRun(){
 			}
 			break;
 		case WALK_STOP:
-			//Tat che do nguoi di bo
+			//Turn off pedestrian mode
 			if(isButtonPressed(BUTTON_PED)){
 				ver_ped = PED_OFF;
 				hor_ped = PED_OFF;
 			}
-			//Cho phep di
+			//Allow walk
 			if(horizontal_status == AUTO_RED){
 				hor_ped = WALK_ALLOW;
 			}
@@ -156,6 +156,7 @@ void fsmPedestrianModeRun() {
 
 	switch(ver_ped){
 		case PED_OFF:
+			//Turn off LED and Buzzer
 			HAL_GPIO_WritePin(LED_RED_P2_GPIO_Port, LED_RED_P2_Pin, LED_OFF);
 			HAL_GPIO_WritePin(LED_GREEN_P2_GPIO_Port, LED_GREEN_P2_Pin, LED_OFF);
 			__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_2, 0);
@@ -163,11 +164,12 @@ void fsmPedestrianModeRun() {
 		case PED_ON:
 			break;
 		case WALK_ALLOW:
+			//Turn on LED Green
 			HAL_GPIO_WritePin(LED_RED_P2_GPIO_Port, LED_RED_P2_Pin, LED_OFF);
 			HAL_GPIO_WritePin(LED_GREEN_P2_GPIO_Port, LED_GREEN_P2_Pin, LED_ON);
 			break;
 		case BUZZER_ON:
-			//Buzzer se to dan va nhanh hon khi thoi gian gan het
+			//Buzzer is louder and faster
 			if(isTimerUp(3) && state == 1){
 				__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_2, pul);
 				setTimer(3, buzzer_time);
@@ -184,6 +186,7 @@ void fsmPedestrianModeRun() {
 			}
 			break;
 		case WALK_STOP:
+			//Turn on LED Red, turn off Buzzer
 			HAL_GPIO_WritePin(LED_RED_P2_GPIO_Port, LED_RED_P2_Pin, LED_ON);
 			HAL_GPIO_WritePin(LED_GREEN_P2_GPIO_Port, LED_GREEN_P2_Pin, LED_OFF);
 			__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_2, 0);
@@ -194,6 +197,7 @@ void fsmPedestrianModeRun() {
 
 	switch(hor_ped){
 		case PED_OFF:
+			//Turn off LED and Buzzer
 			HAL_GPIO_WritePin(LED_RED_P1_GPIO_Port, LED_RED_P1_Pin, LED_OFF);
 			HAL_GPIO_WritePin(LED_GREEN_P1_GPIO_Port, LED_GREEN_P1_Pin, LED_OFF);
 			__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, 0);
@@ -201,11 +205,12 @@ void fsmPedestrianModeRun() {
 		case PED_ON:
 			break;
 		case WALK_ALLOW:
+			//Turn on LED Green
 			HAL_GPIO_WritePin(LED_RED_P1_GPIO_Port, LED_RED_P1_Pin, LED_OFF);
 			HAL_GPIO_WritePin(LED_GREEN_P1_GPIO_Port, LED_GREEN_P1_Pin, LED_ON);
 			break;
 		case BUZZER_ON:
-			//Buzzer se to dan va nhanh hon khi thoi gian gan het
+			//Buzzer is louder and faster
 			if(isTimerUp(2) && state == 1){
 				__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, pul);
 				setTimer(2, buzzer_time);
@@ -222,6 +227,7 @@ void fsmPedestrianModeRun() {
 			}
 			break;
 		case WALK_STOP:
+			//Turn on LED Red, turn off Buzzer
 			HAL_GPIO_WritePin(LED_RED_P1_GPIO_Port, LED_RED_P1_Pin, LED_ON);
 			HAL_GPIO_WritePin(LED_GREEN_P1_GPIO_Port, LED_GREEN_P1_Pin, LED_OFF);
 			__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, 0);

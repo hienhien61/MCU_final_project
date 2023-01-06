@@ -121,6 +121,11 @@ void LEDsDisplay() {
 	}
 }
 
+void resetLights() {
+	horizontal_status = MODE_INIT;
+	vertical_status = MODE_INIT;
+}
+
 
 
 

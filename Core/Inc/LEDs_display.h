@@ -8,5 +8,6 @@ extern int horizontal_status;
 extern int vertical_status;
 
 void LEDsDisplay();
+void resetLights();
 
 #endif /* INC_LEDS_DISPLAY_H_ */

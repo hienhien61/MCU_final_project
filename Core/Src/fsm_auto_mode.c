@@ -6,6 +6,7 @@ void fsmAutoModeRun() {
 	switch (mode) {
 		case MODE_INIT:
 			mode = AUTO_MODE;
+			resetLights();
 			sendModeNoti();
 			break;
 

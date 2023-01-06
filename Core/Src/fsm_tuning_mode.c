@@ -10,6 +10,7 @@ void fsmTuningModeRun() {
 			// Switch to AUTO MODE when press MODE button
 			if (isButtonPressed(BUTTON_MODE)) {
 				mode = AUTO_MODE;
+				resetLights();
 				sendModeNoti();
 			}
 
@@ -33,6 +34,7 @@ void fsmTuningModeRun() {
 			// Switch to AUTO MODE when press MODE button
 			if (isButtonPressed(BUTTON_MODE)) {
 				mode = AUTO_MODE;
+				resetLights();
 				sendModeNoti();
 			}
 
@@ -56,6 +58,7 @@ void fsmTuningModeRun() {
 			// Switch to AUTO MODE when press MODE button
 			if (isButtonPressed(BUTTON_MODE)) {
 				mode = AUTO_MODE;
+				resetLights();
 				sendModeNoti();
 			}
 
